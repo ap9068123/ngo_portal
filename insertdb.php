@@ -11,7 +11,7 @@
 <?php
 
 
-$conn = mysqli_connect('localhost', 'ap', '123456', 'ajay');
+$conn = mysqli_connect('localhost', '', '', '');
 
 $name = $_POST['name'];
 $email= $_POST['email'];
