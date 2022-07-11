@@ -4,16 +4,13 @@ require('config.php');
 require('razorpay-php/Razorpay.php');
 session_start();
 
-// Create the Razorpay Order
+
 
 use Razorpay\Api\Api;
 
 $api = new Api($keyId, $keySecret);
 
-//
-// We create an razorpay order using orders api
-// Docs: https://docs.razorpay.com/docs/orders
-//
+
 
 $price = $_POST['price'];
 $_SESSION['price'] = $price;
@@ -23,9 +20,9 @@ $_SESSION['email'] = $email;
 $contactno = $_POST['contactno'];
 $orderData = [
     'receipt'         => 3456,
-    'amount'          => $price * 100, // 2000 rupees in paise
+    'amount'          => $price * 100, 
     'currency'        => 'INR',
-    'payment_capture' => 1 // auto capture
+    'payment_capture' => 1 
 ];
 
 $razorpayOrder = $api->order->create($orderData);
@@ -95,7 +92,7 @@ $json = json_encode($data);
     <?php if ($displayCurrency !== 'INR') { ?> data-display_currency="<?php echo $data['display_currency']?>" <?php } ?>
   >
   </script>
-  <!-- Any extra fields to be submitted with the form but not sent to Razorpay -->
+
   <input type="hidden" name="shopping_order_id" value="3456">
 </form>
 
