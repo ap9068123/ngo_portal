@@ -5,7 +5,7 @@ require('config.php');
 
 session_start();
 
-$conn = mysqli_connect('localhost', 'ap', '123456', 'ajay');
+$conn = mysqli_connect('localhost', '', '', '');
 
 require('razorpay-php/Razorpay.php');
 use Razorpay\Api\Api;
@@ -21,9 +21,7 @@ if (empty($_POST['razorpay_payment_id']) === false)
 
     try
     {
-        // Please note that the razorpay order ID must
-        // come from a trusted source (session here, but
-        // could be database or something else)
+
         $attributes = array(
             'razorpay_order_id' => $_SESSION['razorpay_order_id'],
             'razorpay_payment_id' => $_POST['razorpay_payment_id'],
